@@ -428,7 +428,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: calc(76px + env(safe-area-inset-top, 0px)) 20px calc(70px + env(safe-area-inset-bottom, 0px))
+      padding: calc(64px + env(safe-area-inset-top, 0px)) 20px calc(24px + env(safe-area-inset-bottom, 0px))
     }
 
     .hero-title {
@@ -531,50 +531,90 @@
       display: none !important;
     }
 
-    @media (max-height:430px) and (orientation:landscape) {
-      .hero-meta .role {
-        display: none
+    @media (max-height: 720px) {
+      .hero-inner {
+        padding-top: calc(54px + env(safe-area-inset-top, 0px));
+        padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
       }
-    }
 
-    @media (max-height:520px) and (orientation:landscape) {
       .hero-title .script {
-        font-size: min(20vw, 26vh);
-        font-size: min(20vw, 26svh)
+        font-size: clamp(48px, min(18vw, 19vh), 140px);
       }
 
       .year {
-        margin-top: 2px
-      }
-
-      .hero-hint {
-        display: none
+        margin-top: 4px;
+        font-size: 14px;
       }
 
       .hero-meta {
-        margin-top: 10px
+        margin-top: 10px;
       }
 
       .hero-meta .name {
-        font-size: 20px
+        font-size: 22px;
       }
 
       .hero-meta .role {
-        font-size: 12.5px;
-        margin-top: 2px
+        font-size: 13px;
+        margin-top: 4px;
       }
 
-      .hero-inner {
-        padding-top: 60px;
-        padding-bottom: 20px
+      .hero-cap {
+        margin-top: 10px;
       }
 
       .hero-cap .s {
-        font-size: 32px
+        font-size: 28px;
       }
 
       .hero-cap p {
-        display: none
+        font-size: 13px;
+        line-height: 1.45;
+      }
+    }
+
+    @media (max-height: 520px) {
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero-inner {
+        padding-top: 48px;
+        padding-bottom: 12px;
+      }
+
+      .hero-title .script {
+        font-size: clamp(38px, 15vh, 76px);
+      }
+
+      .year {
+        margin-top: 2px;
+        font-size: 12px;
+      }
+
+      .hero-meta {
+        margin-top: 6px;
+      }
+
+      .hero-meta .name {
+        font-size: 18px;
+      }
+
+      .hero-meta .role {
+        font-size: 12px;
+        margin-top: 2px;
+      }
+
+      .hero-cap {
+        margin-top: 6px;
+      }
+
+      .hero-cap .s {
+        font-size: 22px;
+      }
+
+      .hero-cap p {
+        display: none;
       }
     }
 
