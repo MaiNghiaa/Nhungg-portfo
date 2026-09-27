@@ -5,6 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Nguyễn Thị Nhung · Portfolio 2026</title>
+  <script>
+    window.addEventListener('unhandledrejection', function (e) {
+      // Suppress unhandled promise rejections from third-party browser extensions (e.g. Cốc Cốc Savior / Media Downloader)
+      if (!e.reason || (typeof e.reason === 'string' && e.reason.includes('rejectFunction')) || (e.reason && (e.reason.message || e.reason.stack || '').includes('rejectFunction'))) {
+        e.preventDefault();
+      }
+    });
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
