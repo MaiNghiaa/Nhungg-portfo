@@ -6,12 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Nguyễn Thị Nhung · Portfolio 2026</title>
   <script>
+    // Suppress unhandled promise rejections from third-party browser extensions (e.g. Cốc Cốc Savior / Media Downloader)
     window.addEventListener('unhandledrejection', function (e) {
-      // Suppress unhandled promise rejections from third-party browser extensions (e.g. Cốc Cốc Savior / Media Downloader)
       if (!e.reason || (typeof e.reason === 'string' && e.reason.includes('rejectFunction')) || (e.reason && (e.reason.message || e.reason.stack || '').includes('rejectFunction'))) {
         e.preventDefault();
       }
     });
+
+    // Disable right-click context menu on video and audio elements
+    document.addEventListener('contextmenu', function (e) {
+      if (e.target && (e.target.tagName === 'VIDEO' || e.target.tagName === 'AUDIO' || e.target.closest('video'))) {
+        e.preventDefault();
+      }
+    }, true);
+
+    // Auto-remove Cốc Cốc Savior download overlays if injected into DOM
+    if (window.MutationObserver) {
+      new MutationObserver(function (mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          var added = mutations[i].addedNodes;
+          for (var j = 0; j < added.length; j++) {
+            var n = added[j];
+            if (n.nodeType === 1) {
+              var cls = (n.className && typeof n.className === 'string') ? n.className : '';
+              var id = (n.id && typeof n.id === 'string') ? n.id : '';
+              if (cls.indexOf('savior') !== -1 || id.indexOf('savior') !== -1 || n.tagName === 'COCCOC-MEDIA-CONTAINER') {
+                try { n.parentNode && n.parentNode.removeChild(n); } catch (err) {}
+              }
+            }
+          }
+        }
+      }).observe(document.documentElement, { childList: true, subtree: true });
+    }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,6 +108,39 @@
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden
+    }
+
+    /* Video protection & hide Cốc Cốc Savior / browser download overlays */
+    video {
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    video::-internal-media-controls-download-button {
+      display: none !important;
+    }
+
+    video::-webkit-media-controls-enclosure {
+      overflow: hidden;
+    }
+
+    .savior-container,
+    [class*="savior"],
+    [id*="savior"],
+    coccoc-media-container,
+    .coccoc-tooltip-container,
+    [data-coccoc] {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      max-width: 0 !important;
+      max-height: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
+      top: -9999px !important;
     }
 
     a {
@@ -3311,8 +3370,9 @@
                 </div>
               </div>
               <div class="phone-screen">
-                <video src="video_totnghiep_dnag_doc.mp4" poster="poster_totnghiep_doc.jpg" controls playsinline
-                  preload="metadata"></video>
+                <video src="video_totnghiep_dnag_doc.mp4" poster="poster_totnghiep_doc.jpg" controls
+                  controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false;"
+                  playsinline preload="metadata"></video>
                 <span class="phone-badge-float">📱 9:16 · TikTok / Reels</span>
               </div>
               <div class="phone-caption-box">
@@ -3325,8 +3385,9 @@
             <div class="grad-stage-col">
               <div class="cinema-card">
                 <div class="cinema-video-wrap">
-                  <video src="video_totnghiep-dang-ngnag.mp4" poster="poster_totnghiep_ngang.jpg" controls playsinline
-                    preload="metadata"></video>
+                  <video src="video_totnghiep-dang-ngnag.mp4" poster="poster_totnghiep_ngang.jpg" controls
+                    controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false;"
+                    playsinline preload="metadata"></video>
                   <span class="cinema-badge">🎬 16:9 · Toàn cảnh hội trường</span>
                 </div>
                 <div class="cinema-meta">
@@ -3370,7 +3431,8 @@
         <div class="grad-view" id="gradView_cinema">
           <div class="grad-focus-card">
             <div class="cinema-video-wrap" style="aspect-ratio:16/9;border-radius:20px">
-              <video src="video_totnghiep-dang-ngnag.mp4" poster="poster_totnghiep_ngang.jpg" controls playsinline
+              <video src="video_totnghiep-dang-ngnag.mp4" poster="poster_totnghiep_ngang.jpg" controls
+                controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false;" playsinline
                 preload="metadata"></video>
               <span class="cinema-badge">🎬 16:9 · Toàn cảnh Hội trường ĐH Cần Thơ</span>
             </div>
@@ -3389,8 +3451,9 @@
           <div class="grad-focus-card" style="max-width:440px">
             <div class="phone-mockup-card" style="box-shadow:none;border:none;padding:0;background:transparent">
               <div class="phone-screen" style="border-radius:28px;box-shadow:0 20px 50px rgba(0,0,0,.4)">
-                <video src="video_totnghiep_dnag_doc.mp4" poster="poster_totnghiep_doc.jpg" controls playsinline
-                  preload="metadata"></video>
+                <video src="video_totnghiep_dnag_doc.mp4" poster="poster_totnghiep_doc.jpg" controls
+                  controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false;"
+                  playsinline preload="metadata"></video>
                 <span class="phone-badge-float">📱 9:16 · Khoảnh khắc trao bằng</span>
               </div>
               <div style="margin-top:16px;text-align:center">
@@ -3542,8 +3605,9 @@
             <!-- 1 video quay -->
             <div class="sport-video-card">
               <div class="sport-video-wrap">
-                <video src="Videoquay.mp4" poster="poster_videoquay.jpg" controls playsinline
-                  preload="metadata"></video>
+                <video src="Videoquay.mp4" poster="poster_videoquay.jpg" controls
+                  controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false;"
+                  playsinline preload="metadata"></video>
                 <span class="video-badge">Video quay thực tế · 16:9</span>
               </div>
               <div class="sport-video-info">
@@ -3932,7 +3996,7 @@
     </div>
     <h3 style="margin-top:24px">Video quay thực tế &amp; hậu trường</h3>
     <div style="margin-top:8px">
-      <video src="Videoquay.mp4" poster="poster_videoquay.jpg" controls playsinline preload="metadata" style="width:100%;border-radius:14px;display:block;background:#000;box-shadow:0 12px 30px rgba(0,0,0,.2)"></video>
+      <video src="Videoquay.mp4" poster="poster_videoquay.jpg" controls controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false;" playsinline preload="metadata" style="width:100%;border-radius:14px;display:block;background:#000;box-shadow:0 12px 30px rgba(0,0,0,.2)"></video>
     </div>` : '';
         body.innerHTML = `<div class="client">${p.client}</div><h2 id="caseTitle">${p.title}</h2>
   ${extraMedia}
