@@ -42,7 +42,7 @@
               var cls = (n.className && typeof n.className === 'string') ? n.className : '';
               var id = (n.id && typeof n.id === 'string') ? n.id : '';
               if (cls.indexOf('savior') !== -1 || id.indexOf('savior') !== -1 || n.tagName === 'COCCOC-MEDIA-CONTAINER') {
-                try { n.parentNode && n.parentNode.removeChild(n); } catch (err) {}
+                try { n.parentNode && n.parentNode.removeChild(n); } catch (err) { }
               }
             }
           }
@@ -411,9 +411,9 @@
       font-size: 34px;
       color: var(--gold-lite);
       text-decoration: none;
-      line-height: 1.25;
+      line-height: 1.35;
       display: inline-block;
-      padding: 4px 10px 14px 4px;
+      padding: 4px 14px 18px 4px;
       margin-bottom: -6px;
       overflow: visible;
       transition: color .25s ease, opacity .25s ease;
@@ -710,22 +710,29 @@
 
     .hero-meta {
       margin: clamp(14px, 3vh, 28px) auto 0;
-      max-width: 38ch
+      max-width: 38ch;
+      position: relative;
     }
 
     .hero-meta .name {
       font-family: var(--serif);
       font-size: clamp(22px, 3vw, 34px);
       font-weight: 700;
-      line-height: 1.2
+      line-height: 1.35;
+      padding-bottom: 8px;
+      overflow: visible;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-meta .role {
-      margin-top: 8px;
+      margin-top: 2px;
       font-size: clamp(13px, 1.4vw, 15px);
       line-height: 1.5;
       color: #D5DEC4;
-      text-wrap: balance
+      text-wrap: balance;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-content {
@@ -736,6 +743,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      overflow: visible;
     }
 
     .hero-cap {
@@ -750,19 +758,23 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      overflow: visible;
+      position: relative;
     }
 
     .hero-cap .s {
       font-family: var(--script);
       font-size: clamp(28px, 4vw, 44px);
       color: var(--gold-lite);
-      line-height: 1.25;
+      line-height: 1.5;
       display: inline-block;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       text-wrap: balance;
       text-align: center;
-      padding: 0 12px 6px;
+      padding: 4px 16px 20px;
       overflow: visible;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-cap p {
@@ -773,6 +785,8 @@
       line-height: 1.55;
       text-wrap: balance;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-hint {
@@ -800,11 +814,13 @@
 
       .hero-meta .name {
         font-size: 22px;
+        line-height: 1.35;
+        padding-bottom: 6px;
       }
 
       .hero-meta .role {
         font-size: 13px;
-        margin-top: 4px;
+        margin-top: 2px;
       }
 
       .hero-cap {
@@ -813,6 +829,8 @@
 
       .hero-cap .s {
         font-size: 28px;
+        line-height: 1.45;
+        padding-bottom: 14px;
       }
 
       .hero-cap p {
@@ -846,6 +864,8 @@
 
       .hero-meta .name {
         font-size: 18px;
+        line-height: 1.35;
+        padding-bottom: 4px;
       }
 
       .hero-meta .role {
@@ -859,6 +879,8 @@
 
       .hero-cap .s {
         font-size: 22px;
+        line-height: 1.4;
+        padding-bottom: 10px;
       }
 
       .hero-cap p {
@@ -3169,7 +3191,11 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
-      margin-bottom: 24px
+      margin-bottom: 24px;
+    }
+
+    .sport-gallery:last-child {
+      margin-bottom: 0;
     }
 
     .poster-item {
@@ -3518,11 +3544,25 @@
       <div class="nav-right">
         <div class="theme-switch" role="group" aria-label="Chế độ giao diện">
           <button type="button" class="theme-btn" data-theme-target="light" aria-label="Chuyển chế độ Sáng">
-            <svg class="theme-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="theme-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
             <span>Light mode</span>
           </button>
           <button type="button" class="theme-btn" data-theme-target="dark" aria-label="Chuyển chế độ Tối">
-            <svg class="theme-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="theme-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
             <span>Dark mode</span>
           </button>
         </div>
@@ -3541,11 +3581,25 @@
       <span class="mnav-theme-title">Giao diện</span>
       <div class="theme-switch m-theme-switch" role="group" aria-label="Chế độ giao diện di động">
         <button type="button" class="theme-btn" data-theme-target="light" aria-label="Chế độ Sáng">
-          <svg class="theme-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="theme-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
           <span>Light mode</span>
         </button>
         <button type="button" class="theme-btn" data-theme-target="dark" aria-label="Chế độ Tối">
-          <svg class="theme-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="theme-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
           <span>Dark mode</span>
         </button>
       </div>
@@ -3599,7 +3653,7 @@
           <li><a href="#about"><span class="k">01</span><span class="t">Mình là ai<small>Giới thiệu, Lễ tốt nghiệp, kỹ
                   năng</small></span><span class="s">Nhận biết</span></a></li>
           <li><a href="#experience"><span class="k">02</span><span class="t">Mình đã làm gì<small>Phú Lâm, Cỏ Organic,
-                  poster thể thao</small></span><span class="s">Quan tâm</span></a></li>
+                  poster thể thao, mẫu ảnh</small></span><span class="s">Quan tâm</span></a></li>
           <li><a href="#trust"><span class="k">03</span><span class="t">Con số và thương hiệu<small>KPI, sản phẩm, điểm
                   mạnh</small></span><span class="s">Tin tưởng</span></a></li>
           <li><a href="#projects"><span class="k">04</span><span class="t">Dự án tiêu biểu<small>4 case
@@ -3640,14 +3694,15 @@
             <span class="note">xin chào!</span>
           </div>
           <div class="monogram" aria-hidden="true">Nhung<em>Nguyễn</em></div>
-          <div class="subrole">Marketing · Content Creator<br>Video Editor</div>
+          <div class="subrole">Marketing · Content Creator<br>Video Editor · Photo Model</div>
         </div>
         <div>
           <p class="lead">Mình tốt nghiệp Quản trị Kinh doanh tại Đại học Cần Thơ và chọn con đường nội dung: biến thông
             tin sản phẩm thành những video, bài viết dễ hiểu và bán được hàng.</p>
-          <p>Mình từng làm Marketing tại Công ty thuốc thủy sản Phú Lâm và Video Editor remote cho brand Cỏ Organic,
-            đồng thời nhận thiết kế poster thể thao freelance. Công việc hằng ngày của mình là lên ý tưởng, viết kịch
-            bản, dựng video ngắn cho TikTok và Reels, rồi theo dõi xem nội dung đó mang lại doanh số ra sao.</p>
+          <p>Mình từng làm Marketing tại Công ty thuốc thủy sản Phú Lâm, Video Editor remote cho brand Cỏ Organic, đồng
+            thời tham gia làm mẫu ảnh và thiết kế poster thể thao freelance. Công việc hằng ngày của mình là lên ý
+            tưởng, viết kịch bản, chụp ảnh concept, dựng video ngắn cho TikTok và Reels, rồi theo dõi xem nội dung đó
+            mang lại doanh số ra sao.</p>
           <p>Vì học kinh doanh trước khi làm nội dung, mình luôn hỏi một câu trước khi dựng video: xem xong, khách sẽ
             làm gì tiếp theo?</p>
           <div class="facts">
@@ -3665,6 +3720,7 @@
             <ul class="chips">
               <li>Content Marketing</li>
               <li>Social Media</li>
+              <li>Mẫu ảnh (Photo Model)</li>
               <li>Viết kịch bản</li>
               <li>Hook · Caption · CTA</li>
               <li>Edit TikTok / Reels</li>
@@ -3778,8 +3834,8 @@
           <div class="grad-focus-card">
             <div class="cinema-video-wrap" style="aspect-ratio:16/9;border-radius:20px">
               <video src="video_totnghiep-dang-ngnag.mp4" poster="poster_totnghiep_ngang.jpg" controls
-                controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false;" playsinline
-                preload="metadata"></video>
+                controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false;"
+                playsinline preload="metadata"></video>
               <span class="cinema-badge">🎬 16:9 · Toàn cảnh Hội trường ĐH Cần Thơ</span>
             </div>
             <div style="margin-top:18px">
@@ -3918,14 +3974,14 @@
             </div>
           </div>
 
-          <!-- TÁC PHẨM THỰC TẾ: 4 POSTER & 1 VIDEO QUAY -->
+          <!-- TÁC PHẨM THỰC TẾ: 4 POSTER THỂ THAO -->
           <div class="sport-showcase">
             <div class="sport-showcase-head">
               <div>
-                <h4>Tác phẩm poster &amp; video quay thực tế</h4>
-                <p>4 thiết kế poster thể thao cá nhân hóa &amp; 1 video quay sản phẩm thực tế:</p>
+                <h4>Tác phẩm poster thể thao thực tế</h4>
+                <p>4 thiết kế poster thể thao cá nhân hóa cho vận động viên &amp; người chơi thể thao:</p>
               </div>
-              <span class="note">thiết kế thật &amp; video quay</span>
+              <span class="note">thiết kế thật</span>
             </div>
 
             <!-- 4 ảnh thiết kế poster -->
@@ -3947,6 +4003,47 @@
                 <span class="poster-overlay"><span>Poster #04 · Tiến Dũng #22 (Bóng đá)</span></span>
               </div>
             </div>
+          </div>
+
+        </div>
+      </article>
+      <article class="job">
+        <div class="num" aria-hidden="true">4.</div>
+        <div>
+          <div class="job-card">
+            <div class="where">Freelance · Brand &amp; Concept Media</div>
+            <h3>MẪU ẢNH / PHOTO MODEL</h3>
+            <p>Có kinh nghiệm tham gia chụp ảnh mẫu cho nhiều concept khác nhau: thời trang, cá nhân, sản phẩm và hình ảnh thương hiệu. Kết hợp kinh nghiệm mẫu ảnh + thiết kế poster + chỉnh sửa hình ảnh/video để tạo ra nội dung trực quan, phù hợp với mục đích truyền thông.</p>
+            <p class="ctx">Chủ động phối hợp cùng photographer, stylist và ekip để đảm bảo hình ảnh đúng yêu cầu. Có khả năng thích nghi với nhiều phong cách hình ảnh, từ trẻ trung, năng động đến thanh lịch, cá tính.</p>
+          </div>
+          <div class="job-cols">
+            <div>
+              <h4>Kỹ năng &amp; Biểu cảm</h4>
+              <ul>
+                <li>Có kinh nghiệm tham gia chụp ảnh mẫu cho nhiều concept khác nhau: thời trang, cá nhân, sản phẩm và hình ảnh thương hiệu.</li>
+                <li>Có khả năng tạo dáng, biểu cảm và tương tác với bối cảnh phù hợp với từng concept chụp.</li>
+                <li>Có khả năng thích nghi với nhiều phong cách hình ảnh, từ trẻ trung, năng động đến thanh lịch, cá tính.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Phối hợp &amp; Xây dựng hình ảnh</h4>
+              <ul>
+                <li>Chủ động phối hợp cùng photographer, stylist và ekip để đảm bảo hình ảnh đúng yêu cầu.</li>
+                <li>Có kinh nghiệm xây dựng hình ảnh cá nhân và hỗ trợ tạo nội dung hình ảnh cho mạng xã hội.</li>
+                <li>Kết hợp kinh nghiệm mẫu ảnh + thiết kế poster + chỉnh sửa hình ảnh/video để tạo ra nội dung trực quan, phù hợp với mục đích truyền thông.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- TÁC PHẨM THỰC TẾ: VIDEO QUAY LẶN BIỂN / MẪU CONCEPT -->
+          <div class="sport-showcase">
+            <div class="sport-showcase-head">
+              <div>
+                <h4>Tác phẩm mẫu &amp; video quay thực tế</h4>
+                <p>Video trải nghiệm ghi hình và tạo dáng dưới nước (Freediving / Mermaid concept):</p>
+              </div>
+              <span class="note">mẫu concept &amp; quay dựng</span>
+            </div>
 
             <!-- 1 video quay -->
             <div class="sport-video-card">
@@ -3957,14 +4054,12 @@
                 <span class="video-badge">Video quay thực tế · 16:9</span>
               </div>
               <div class="sport-video-info">
-                <span class="note">quay &amp; dựng thực tế</span>
+                <span class="note">quay &amp; diễn xuất thực tế</span>
                 <h5>Quay &amp; Hậu kỳ Video Nghệ Thuật / Thể Thao Dưới Nước</h5>
-                <p>Trực tiếp ghi hình góc máy dưới nước (Freediving / Mermaid), bắt trọn chuyển động mềm mại trong làn
-                  nước trong vắt, chỉnh màu sắc tươi sáng, xử lý nhịp cắt và âm thanh sống động.</p>
+                <p>Trực tiếp tham gia tạo dáng và ghi hình góc máy dưới nước (Freediving / Mermaid), tương tác tự nhiên với bối cảnh đại dương, thể hiện chuyển động mềm mại trong làn nước trong vắt, kết hợp chỉnh màu sắc tươi sáng và nhịp dựng sống động.</p>
               </div>
             </div>
           </div>
-
         </div>
       </article>
     </div>
@@ -4811,7 +4906,7 @@
         if (save === undefined) save = true;
         document.documentElement.setAttribute('data-theme', theme);
         if (save) {
-          try { localStorage.setItem('nhung_theme', theme); } catch (e) {}
+          try { localStorage.setItem('nhung_theme', theme); } catch (e) { }
         }
         document.querySelectorAll('.theme-btn').forEach(btn => {
           const isTarget = btn.getAttribute('data-theme-target') === theme;
@@ -4841,7 +4936,7 @@
             setTheme(e.matches ? 'dark' : 'light', false);
           }
         });
-      } catch (e) {}
+      } catch (e) { }
 
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
